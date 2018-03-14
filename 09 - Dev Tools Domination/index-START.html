@@ -6,7 +6,7 @@
 </head>
 <body>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+  <p onClick="makeGreen()" class="justP">×BREAK×DOWN×</p>
 
   <script>
     const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
@@ -17,30 +17,52 @@
       p.style.fontSize = '50px';
     }
 
+
+
     // Regular
-
+    console.log('Hello!');
     // Interpolated
-
+    console.log('Hello I\'m %s', 'Maks');
     // Styled
-
+    console.log('%c This text is big and blue', 'color: blue; font-size: 20px;');
+    console.clear();
     // warning!
-
+    console.warn('Don\'t do this!')
     // Error :|
-
+    console.error('You broke our program');
     // Info
-
+    console.info('You can restart this page');
     // Testing
-
+    const justP = document.querySelector('.justP');
+    console.assert(justP.classList.contains('nonon'), 'that isn\'t right');
     // clearing
-
+    console.clear();
     // Viewing DOM Elements
-
+    console.dir(justP);
     // Grouping together
-
+    dogs.forEach(dog => {
+        console.group(`${dog.name}`);
+        console.log(`dogs name is ${dog.name}`);
+        console.log(`dogs name is ${dog.name} and age is ${dog.age}`);
+        console.log(`dogs name is ${dog.name} and age is ${dog.age * 7} dog's age`);
+        console.groupEnd(`${dog.name}`);
+    });
     // counting
-
+    console.count('first');
+    console.count('first');
+    console.count('second');
+    console.count('second');
+    console.count('second');
     // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/wesbos')
+        .then(data => data.json())
+    .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+    });
 
+    console.table([1, 2, 3, 4])
   </script>
 </body>
 </html>
